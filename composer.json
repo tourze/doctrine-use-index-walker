@@ -1,6 +1,6 @@
 {
   "name": "tourze/doctrine-use-index-walker",
-  "description": "Auto add USE INDEX in query",
+  "description": "Auto add USE INDEX in doctrine query",
   "type": "library",
   "require": {
     "doctrine/dbal": "^4.0",
