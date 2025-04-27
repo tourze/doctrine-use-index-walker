@@ -7,30 +7,30 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/tourze/doctrine-use-index-walker.svg?style=flat-square)](https://scrutinizer-ci.com/g/tourze/doctrine-use-index-walker)
 [![Total Downloads](https://img.shields.io/packagist/dt/tourze/doctrine-use-index-walker.svg?style=flat-square)](https://packagist.org/packages/tourze/doctrine-use-index-walker)
 
-A Doctrine ORM SQL Walker for automatically adding `USE INDEX` or `FORCE INDEX` hints to MySQL queries, helping you optimize SQL performance with minimal code changes.
+简要描述：本库为 Doctrine ORM 查询自动添加 MySQL `USE INDEX` 或 `FORCE INDEX` 提示，帮助优化 SQL 查询性能。
 
-## Features
+## 功能特性
 
-- Automatically injects `USE INDEX` or `FORCE INDEX` hints into Doctrine queries
-- Works only on MySQL platforms, compatible with Doctrine ORM 2.20+ and 3.0+
-- Simple usage via query hints
-- Fully compatible with native Doctrine query API
+- 支持在 Doctrine 查询中自动插入 `USE INDEX` 或 `FORCE INDEX` 提示
+- 仅对 MySQL 平台生效，兼容 Doctrine ORM 2.20+ 和 3.0+
+- 操作简单，支持多种索引提示
+- 兼容原生 Doctrine 查询 API
 
-## Installation
+## 安装说明
 
-Install via Composer:
+使用 Composer 安装：
 
 ```bash
 composer require tourze/doctrine-use-index-walker
 ```
 
-Requirements:
+依赖环境：
 
-- PHP 7.4 or higher
-- Doctrine ORM 2.20+ or 3.0+
+- PHP 7.4 及以上
+- Doctrine ORM 2.20+ 或 3.0+
 - Doctrine DBAL 4.0+
 
-## Quick Start
+## 快速开始
 
 ```php
 <?php
@@ -38,39 +38,39 @@ Requirements:
 use Tourze\DoctrineUseIndexWalker\UseIndexWalker;
 use Doctrine\ORM\Query;
 
-// Create a query
+// 创建查询
 $query = $entityManager->createQuery('SELECT u FROM User u WHERE u.name = :name');
-$query->setParameter('name', 'john');
+$query->setParameter('name', 'zhangsan');
 
-// Add USE INDEX hint
+// 添加 USE INDEX 提示
 $query->setHint(Query::HINT_CUSTOM_TREE_WALKERS, [UseIndexWalker::class]);
 $query->setHint(UseIndexWalker::HINT_USE_INDEX, 'idx_user_name');
 
-// Or add FORCE INDEX hint
+// 或添加 FORCE INDEX 提示
 $query->setHint(Query::HINT_CUSTOM_TREE_WALKERS, [UseIndexWalker::class]);
 $query->setHint(UseIndexWalker::HINT_FORCE_INDEX, 'idx_user_name');
 
-// Execute query
+// 执行查询
 $result = $query->getResult();
 ```
 
-## Notes
+## 注意事项
 
-- Only works on MySQL database platforms
-- If both `USE INDEX` and `FORCE INDEX` are set, `USE INDEX` takes precedence
-- Index hint syntax depends on your MySQL version; refer to the MySQL documentation for details
+- 仅在 MySQL 数据库平台生效
+- 同时设置 `USE INDEX` 和 `FORCE INDEX` 时，优先使用 `USE INDEX`
+- 索引提示语法依赖 MySQL 版本，具体请参考 MySQL 官方文档
 
-## How It Works
+## 工作原理
 
-When the walker is applied to a query, it checks if the platform is MySQL and modifies the SQL accordingly:
+当 Walker 被应用于查询时，会检测数据库平台是否为 MySQL，并根据设置的 Hint 修改 SQL：
 
-1. If `UseIndexWalker::HINT_USE_INDEX` is set, adds `USE INDEX (index_name)` to the FROM clause
-2. If `UseIndexWalker::HINT_FORCE_INDEX` is set, adds `FORCE INDEX (index_name)` to the FROM clause
+1. 设置 `UseIndexWalker::HINT_USE_INDEX` 时，FROM 子句自动加 `USE INDEX (index_name)`
+2. 设置 `UseIndexWalker::HINT_FORCE_INDEX` 时，FROM 子句自动加 `FORCE INDEX (index_name)`
 
-## Contributing
+## 贡献指南
 
-Feel free to open issues or pull requests. Please follow PSR coding standards and include tests where possible.
+欢迎提交 Issue 和 PR，建议遵循 PSR 代码规范并补充单元测试。
 
-## License
+## 版权和许可
 
 MIT License
