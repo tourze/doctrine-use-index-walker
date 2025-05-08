@@ -2,15 +2,15 @@
   "name": "tourze/doctrine-use-index-walker",
   "description": "Auto add USE INDEX in doctrine query",
   "type": "library",
+  "license": "MIT",
   "require": {
     "doctrine/dbal": "^4.0",
     "doctrine/orm": "^3.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^10.0",
-    "phpstan/phpstan": "^2.1"
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^10.0"
   },
-  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Tourze\\DoctrineUseIndexWalker\\": "src/"
