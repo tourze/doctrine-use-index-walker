@@ -22,11 +22,13 @@ class UseIndexWalker extends SqlWalker
 
         // 这个目前只有MySQL支持
         if ($this->getConnection()->getDatabasePlatform() instanceof AbstractMySQLPlatform) {
-            if ($index = $this->getQuery()->getHint(self::HINT_USE_INDEX)) {
+            $index = $this->getQuery()->getHint(self::HINT_USE_INDEX);
+            if ($index !== null && $index !== false) {
                 return preg_replace('#(\bFROM\s*\w+\s*\w+)#', '\1 USE INDEX (' . $index . ')', $sql);
             }
 
-            if ($index = $this->getQuery()->getHint(self::HINT_FORCE_INDEX)) {
+            $index = $this->getQuery()->getHint(self::HINT_FORCE_INDEX);
+            if ($index !== null && $index !== false) {
                 return preg_replace('#(\bFROM\s*\w+\s*\w+)#', '\1 FORCE INDEX (' . $index . ')', $sql);
             }
         }
