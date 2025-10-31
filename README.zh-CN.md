@@ -3,8 +3,11 @@
 [English](README.md) | [中文](README.zh-CN.md)
 
 [![Latest Version](https://img.shields.io/packagist/v/tourze/doctrine-use-index-walker.svg?style=flat-square)](https://packagist.org/packages/tourze/doctrine-use-index-walker)
+[![PHP Version](https://img.shields.io/packagist/php-v/tourze/doctrine-use-index-walker.svg?style=flat-square)](https://packagist.org/packages/tourze/doctrine-use-index-walker)
+[![License](https://img.shields.io/packagist/l/tourze/doctrine-use-index-walker.svg?style=flat-square)](https://packagist.org/packages/tourze/doctrine-use-index-walker)
 [![Build Status](https://img.shields.io/travis/tourze/doctrine-use-index-walker/master.svg?style=flat-square)](https://travis-ci.org/tourze/doctrine-use-index-walker)
 [![Quality Score](https://img.shields.io/scrutinizer/g/tourze/doctrine-use-index-walker.svg?style=flat-square)](https://scrutinizer-ci.com/g/tourze/doctrine-use-index-walker)
+[![Coverage Status](https://img.shields.io/coveralls/github/tourze/doctrine-use-index-walker/master.svg?style=flat-square)](https://coveralls.io/github/tourze/doctrine-use-index-walker?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/tourze/doctrine-use-index-walker.svg?style=flat-square)](https://packagist.org/packages/tourze/doctrine-use-index-walker)
 
 简要描述：本库为 Doctrine ORM 查询自动添加 MySQL `USE INDEX` 或 `FORCE INDEX` 提示，帮助优化 SQL 查询性能。
@@ -12,7 +15,7 @@
 ## 功能特性
 
 - 支持在 Doctrine 查询中自动插入 `USE INDEX` 或 `FORCE INDEX` 提示
-- 仅对 MySQL 平台生效，兼容 Doctrine ORM 2.20+ 和 3.0+
+- 仅对 MySQL 平台生效，兼容 Doctrine ORM 3.0+
 - 操作简单，支持多种索引提示
 - 兼容原生 Doctrine 查询 API
 
@@ -26,8 +29,8 @@ composer require tourze/doctrine-use-index-walker
 
 依赖环境：
 
-- PHP 7.4 及以上
-- Doctrine ORM 2.20+ 或 3.0+
+- PHP 8.2 及以上
+- Doctrine ORM 3.0+
 - Doctrine DBAL 4.0+
 
 ## 快速开始
